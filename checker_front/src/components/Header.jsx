@@ -1,11 +1,23 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from 'axios'
 import '../App.css'
 
 function Header() {
-    const [response, setResponse] = useState('')
+    const [userInput, setUserInput] = useState('');
+    const [response, setResponse] = useState('');
+    const [status, setStatus] = useState('');
 
-    function handleResponse() {
-        setResponse("Strong") // retrieve response from model (either strong or weak)
+    function handleChange(e) {
+        setUserInput(e.target.value);
+    }
+
+    function sendData() {
+        axios.post('http://127.0.0.1:5000/api/password', {input: userInput})
+        .then(r => {
+            setResponse(r.data.message)
+        }).catch(err => {
+            console.log('Error: ', err)
+        });
     }
 
     return (
@@ -19,8 +31,8 @@ function Header() {
 
                 <div className="inputField">
                     <label htmlFor="">Enter your password:</label>
-                    <input type="text"/>
-                    <button onClick={handleResponse}>Check</button>
+                    <input type="text" value={userInput} onChange={handleChange} placeholder="Enter password here..."/>
+                    <button onClick={sendData}>Check</button>
                     <p>{response}</p>
                 </div>
             </div>
