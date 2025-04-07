@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def check_password(request):
+    print('Password Checked')

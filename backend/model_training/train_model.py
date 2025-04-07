@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import joblib
 
-data= pd.read_csv(r"C:\Users\andri\Desktop\password_checker_petProject\AI\Updated_Password_Dataset.csv")
+data= pd.read_csv(r"C:\Users\andri\Desktop\Lab_Week3\week 8\Password_Strength_Checker\backend\model_training\Updated_Password_Dataset.csv")
 df = pd.DataFrame(data)
 shuffled_df = shuffle(df)
 

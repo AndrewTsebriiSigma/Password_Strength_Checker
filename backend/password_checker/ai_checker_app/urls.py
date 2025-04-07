@@ -1,5 +1,6 @@
-from django.urls import path, include
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    #links to views.py
+    path('check-password/', views.check_password, name='check-password'),
 ]
