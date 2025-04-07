@@ -7,6 +7,7 @@ from sklearn.model_selection import cross_val_score
 from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+import joblib
 
 data= pd.read_csv(r"C:\Users\andri\Desktop\password_checker_petProject\AI\Updated_Password_Dataset.csv")
 df = pd.DataFrame(data)
@@ -41,3 +42,6 @@ print(f'Accuracy Score: {accuracy_score(y_test, predicted)}')
 cv_scores = cross_val_score(model, X_scaled, y, cv=5, scoring='accuracy')
 print(f'Cross-Validation Accuracy Scores: {cv_scores}')
 print(f'Mean CV Accuracy: {cv_scores.mean()}')
+
+#Saving the model
+joblib.dump(model, 'password_strength_model.pkl')
